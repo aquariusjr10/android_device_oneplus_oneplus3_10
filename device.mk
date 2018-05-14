@@ -121,7 +121,7 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libvolumelistener \
-    tinymix
+    libtinycompress
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
