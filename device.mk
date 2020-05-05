@@ -116,7 +116,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # GoogleCamera
-$(call inherit-product, packages/apps/Googlecamera/config.mk)
+#$(call inherit-product, packages/apps/Googlecamera/config.mk)
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -417,7 +417,7 @@ PRODUCT_COPY_FILES += \
 # Qualcomm
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect
-
+    
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
