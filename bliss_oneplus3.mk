@@ -39,6 +39,5 @@ TARGET_VENDOR := oneplus
 
 #Bliss build details
 export BLISS_BUILDTYPE=OFFICIAL
-export BLISS_DEVELOPER=Deepakjr
 #Changelog fix
 export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
