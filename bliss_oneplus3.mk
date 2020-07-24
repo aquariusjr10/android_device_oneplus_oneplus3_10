@@ -39,5 +39,6 @@ TARGET_VENDOR := oneplus
 
 #Bliss build details
 export BLISS_BUILDTYPE=OFFICIAL
+TARGET_USES_LAWNCHAIR := true
 #Changelog fix
 export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
