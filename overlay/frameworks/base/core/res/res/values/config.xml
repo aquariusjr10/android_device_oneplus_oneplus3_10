@@ -451,12 +451,6 @@
        <!-- Whether to artificially interpret all signal strengths as one bar higher than they actually are -->
     <bool name="config_inflateSignalStrength">true</bool>
     
-        <!-- Battery Health -->
-    <string name="config_batChargeCycle">/sys/class/power_supply/bms/cycle_count</string>
-    <string name="config_batDesCap">/sys/class/power_supply/bms/charge_full_design</string>
-    <string name="config_batCurCap">/sys/class/power_supply/bms/charge_full</string>
-    <bool name="config_supportBatteryHealth">true</bool>
-    
     <!-- Fix dual status bar padding issue -->
     <dimen name="status_bar_height_portrait">94.0px</dimen>
     
