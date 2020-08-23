@@ -205,9 +205,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service
+    android.hardware.camera.provider@2.4-service\
+    vendor.qti.hardware.camera.device@1.0
 
 #GoogleCamera
 $(call inherit-product-if-exists, packages/apps/GoogleCamera/config.mk)
@@ -397,6 +397,10 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
+
+# Prebuilts
+PRODUCT_PACKAGES += \
+    GoogleCamera
 
 # Power
 PRODUCT_PACKAGES += \
