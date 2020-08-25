@@ -464,4 +464,11 @@
         <item>org.lineageos.settings.device.KeyHandler</item>
     </string-array>
 
+    <integer-array name="config_keyboardTapVibePattern">
+        <item>35</item>
+    </integer-array>
+    
+    <!-- Sets the package name for device parts-->
+    <string name="config_device_parts_package_name" translatable="false">com.dsmartapps.root.kerneltweaker</string>
+    <string name="config_device_parts_package_activity" translatable="false">com.dsmartapps.root.kerneltweaker.Activities.MainActivity</string>
 </resources>

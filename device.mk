@@ -204,11 +204,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qcom.bluetooth.soc=rome
 
-# Camera
+# Camera & KernelConfig
 PRODUCT_PACKAGES += \
-    Snap \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service
+    android.hardware.camera.provider@2.4-service \
+    KernelConfig
+
+# Dex
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
