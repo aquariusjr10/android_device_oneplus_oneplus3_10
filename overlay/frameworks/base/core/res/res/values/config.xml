@@ -411,4 +411,55 @@
 
     <!-- Minimum color temperature, in Kelvin, supported by Night display. -->
     <integer name="config_nightDisplayColorTemperatureMin">1200</integer>
+    
+     <!-- Set this to true to enable the platform's auto-power-save modes like doze and
+         app standby.  These are not enabled by default because they require a standard
+         cloud-to-device messaging service for apps to interact correctly with the modes
+         (such as to be able to deliver an instant message to the device even when it is
+         dozing).  This should be enabled if you have such services and expect apps to
+         correctly use them when installed on your device.  Otherwise, keep this disabled
+         so that applications can still use their own mechanisms. -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+    
+     <!-- Flag indicating whether we should enable the automatic brightness.
+         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
+    <bool name="config_automatic_brightness_available">true</bool>
+
+    <!-- Flag indicating whether we should enable the adaptive sleep.-->
+    <bool name="config_adaptive_sleep_available">true</bool>
+
+    <!-- Flag indicating whether we should enable smart battery. -->
+    <bool name="config_smart_battery_available">true</bool>
+    
+     <!-- Set this true only if the device has separate attention and notification lights. -->
+    <bool name="config_useAttentionLight">true</bool>
+    
+      <!-- If true, the screen can be rotated via the accelerometer in all 4
+         rotations as the default behavior. -->
+    <bool name="config_allowAllRotations">true</bool>
+    
+        <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
+    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
+    
+     <!-- Does device supports fast charging -->
+    <bool name="config_FastChargingLedSupported">true</bool>
+    
+     <!-- For OnePlus 3/T -->
+    <string name="config_cpu_temp_path">/sys/class/thermal/thermal_zone4/temp</string>
+    <string name="config_battery_temp_path">/sys/class/power_supply/battery/temp</string>
+    <string name="config_gpu_clock_path">/sys/kernel/gpu/gpu_clock</string>
+    <string name="config_gpu_busy_path">/sys/kernel/gpu/gpu_busy</string>
+    <integer name="config_cpu_temp_multiplier">10</integer>
+    <integer name="config_battery_temp_multiplier">10</integer>
+    
+       <!-- Whether to artificially interpret all signal strengths as one bar higher than they actually are -->
+    <bool name="config_inflateSignalStrength">true</bool>
+    
+    <!-- Fix dual status bar padding issue -->
+    <dimen name="status_bar_height_portrait">94.0px</dimen>
+    
+       <!-- Sets the package name for device parts-->
+    <string name="config_device_parts_package_name" translatable="false">com.oneplus.shit.settings</string>
+    <string name="config_device_parts_package_activity" translatable="false">com.oneplus.shit.settings.ShitPanelActivity</string>
+
 </resources>
