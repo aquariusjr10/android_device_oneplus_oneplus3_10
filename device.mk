@@ -26,10 +26,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 $(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
 
+$(call inherit-product, vendor/gapps/config.mk)
+
+$(call inherit-product, device/oneplus/oneplusShit/opshit.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay 
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -238,7 +241,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES  += \
     ro.opengles.version=196610 \
-    ro.sf.lcd_density=420
+    ro.sf.lcd_density=450
 
 # Display calibration
 PRODUCT_PACKAGES += \
