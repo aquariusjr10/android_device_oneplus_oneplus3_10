@@ -26,9 +26,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 $(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
 
-$(call inherit-product, vendor/gapps/config.mk)
-
-$(call inherit-product, device/oneplus/oneplusShit/opshit.mk)
+#$(call inherit-product, vendor/gapps/config.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
