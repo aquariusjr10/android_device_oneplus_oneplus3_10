@@ -40,4 +40,11 @@ TARGET_VENDOR := oneplus
 #Zenx stuffs
 TARGET_BOOT_ANIMATION_RES := 1080
 ZENX_BUILD_TYPE := Official
-#TARGET_GAPPS_ARCH := arm64
+
+# Setup Gapps options
+IS_PHONE := true
+TARGET_GAPPS_ARCH := arm64
+TARGET_INCLUDE_STOCK_ARCORE := true
+TARGET_MINIMAL_APPS := false
+TARGET_SUPPORTS_GOOGLE_RECORDER := false
+$(call inherit-product, vendor/gapps/config.mk)
