@@ -115,6 +115,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
+# GoogleCamera
+$(call inherit-product, packages/apps/Googlecamera/config.mk)
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
