@@ -31,8 +31,6 @@ $(call inherit-product, vendor/oplauncher/OPLauncher2.mk)
 
 $(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
 
-#$(call inherit-product, vendor/gapps/config.mk)
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay 
@@ -115,9 +113,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# GoogleCamera
-#$(call inherit-product, packages/apps/Googlecamera/config.mk)
-
+# Prebuilts
+PRODUCT_PACKAGES += \
+    GoogleCamera
+    
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
@@ -251,7 +250,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES  += \
     ro.opengles.version=196610 \
-    ro.sf.lcd_density=300
+    ro.sf.lcd_density=350
 
 # Display calibration
 PRODUCT_PACKAGES += \
