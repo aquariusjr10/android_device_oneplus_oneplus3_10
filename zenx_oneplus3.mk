@@ -43,9 +43,12 @@ ZENX_BUILD_TYPE := Official
 
 # Setup Gapps options
 IS_PHONE := true
-TARGET_GAPPS_ARCH := arm64
+#TARGET_GAPPS_ARCH := arm64
 TARGET_INCLUDE_STOCK_ARCORE := true
 TARGET_MINIMAL_APPS := false
-TARGET_SUPPORTS_GOOGLE_RECORDER := false
+#TARGET_SUPPORTS_GOOGLE_RECORDER := false
+#Op Launcher
+USE_OP_LAUNCHER := true
+$(call inherit-product, vendor/oplauncher/OPLauncher2.mk)
 GAPPS_VARIANT := nano
-$(call inherit-product, vendor/gapps/config.mk)
+#$(call inherit-product, vendor/gapps/config.mk)
