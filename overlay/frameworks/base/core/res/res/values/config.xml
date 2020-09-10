@@ -417,26 +417,13 @@
 
     <!-- Flag indicating whether we should enable smart battery. -->
     <bool name="config_smart_battery_available">true</bool>
-</resources>
 
     <!-- Set this true only if the device has separate attention and notification lights. -->
-    <bool name="config_useAttentionLight">false</bool>
+    <bool name="config_useAttentionLight">true</bool>
     
     <!-- If true, the screen can be rotated via the accelerometer in all 4
          rotations as the default behavior. -->
     <bool name="config_allowAllRotations">true</bool>
-    
-    <!-- Indicate available ColorDisplayManager.COLOR_MODE_xxx. -->
-    <integer-array name="config_availableColorModes">
-        <item>standard:standard</item>
-        <item>dynamic:dynamic</item>
-        <item>cinema:cinema</item>
-        <item>astronomy:astronomy</item>
-        <item>photography:photography</item>
-        <item>basic:basic</item>
-        <item>srgb:srgb</item>
-        <item>dci_p3:dci_p3</item>
-    </integer-array>
     
     <!-- Display low battery warning when battery level dips to this value -->
     <integer name="config_lowBatteryWarningLevel">25</integer>
@@ -447,13 +434,6 @@
    <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
     <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
     
-     <!-- Flag specifying whether VoLTE is available on device -->
-    <bool name="config_device_volte_available">true</bool>
-
-    <!-- Flag specifying whether VoLTE should be available for carrier: independent of
-         carrier provisioning. If false: hard disabled. If true: then depends on carrier
-         provisioning, availability etc -->
-    <bool name="config_carrier_volte_available">true</bool>
-    
     <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
     <bool name="config_zramWriteback">true</bool>
+   </resources>
