@@ -43,4 +43,4 @@
     
     <!-- Defines custom OEM sensor for pocket detection. -->
     <string name="config_pocketJudgeVendorSensorName">org.lineageos.pocketmode.PocketModeService</string>
-
+</resources>
