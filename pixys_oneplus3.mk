@@ -41,4 +41,3 @@ TARGET_BOOT_ANIMATION_RES := 1080
 
 # Inherit some common Pixys stuff.
 $(call inherit-product, vendor/pixys/config/common_full_phone.mk)
-
