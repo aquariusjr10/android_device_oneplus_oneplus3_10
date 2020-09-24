@@ -31,7 +31,7 @@
     <bool name="config_enableSmartPixels">true</bool>
     
     <!-- Whether device has physical tri state switch -->
-    <bool name="config_hasAlertSlider">true</bool>
+    <bool name="config_hasAlertSlider">false</bool>
     
     <!-- System info -->
     <string name="config_sysCPUTemp">/sys/class/thermal/thermal_zone4/temp</string>
@@ -43,4 +43,7 @@
     
     <!-- Defines custom OEM sensor for pocket detection. -->
     <string name="config_pocketJudgeVendorSensorName">org.lineageos.pocketmode.PocketModeService</string>
+    
+        <!-- Vowifi -->
+    <bool name="config_hasVowifi">true</bool>
 </resources>
