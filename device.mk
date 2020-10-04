@@ -321,13 +321,13 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service
 
 # Lineage hardware
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.oneplus3 \
-    vendor.lineage.trust@1.0-service
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.touch@1.0-service.oneplus3 \
+#    vendor.lineage.trust@1.0-service
 
 # LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.oneplus3
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.livedisplay@2.0-service.oneplus3
 
 # Media
 PRODUCT_COPY_FILES += \
