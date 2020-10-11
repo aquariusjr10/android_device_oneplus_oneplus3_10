@@ -33,7 +33,13 @@ PRODUCT_BRAND := OnePlus
 
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
-BUILD_FINGERPRINT := "OnePlus/OnePlus3/OnePlus3:9/PKQ1.181203.001/1907311932:user/release-keys"
+BUILD_FINGERPRINT := google/coral/coral:11/RP1A.201005.004/6782484:user/release-keys
+BUILD_DESCRIPTION := coral-user 11 RP1A.201005.004 6782484 release-keys
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.build.fingerprint=$(BUILD_FINGERPRINT)
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="$(BUILD_DESCRIPTION)"
 
 TARGET_VENDOR := oneplus
 
@@ -41,15 +47,13 @@ TARGET_VENDOR := oneplus
 TARGET_BOOT_ANIMATION_RES := 1080
 ZENX_BUILD_TYPE := Official
 
-# Setup Gapps options
+# Gapps
+WITH_GAPPS := true
 IS_PHONE := true
-#TARGET_GAPPS_ARCH := arm64
+TARGET_GAPPS_ARCH := arm64
 TARGET_INCLUDE_STOCK_ARCORE := true
 TARGET_MINIMAL_APPS := false
-#TARGET_SUPPORTS_GOOGLE_RECORDER := false
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
 
 #Op Launcher
 TARGET_LAUNCHER_CHOICE := oplauncher
-
-GAPPS_VARIANT := nano
-#$(call inherit-product, vendor/gapps/config.mk)
