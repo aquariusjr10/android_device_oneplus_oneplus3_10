@@ -47,8 +47,9 @@ IS_PHONE := true
 TARGET_INCLUDE_STOCK_ARCORE := true
 TARGET_MINIMAL_APPS := false
 #TARGET_SUPPORTS_GOOGLE_RECORDER := false
+
 #Op Launcher
-USE_OP_LAUNCHER := true
-$(call inherit-product, vendor/oplauncher/OPLauncher2.mk)
+TARGET_LAUNCHER_CHOICE := oplauncher
+
 GAPPS_VARIANT := nano
 #$(call inherit-product, vendor/gapps/config.mk)
