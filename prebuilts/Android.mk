@@ -11,3 +11,22 @@ LOCAL_MODULE_PATH := $(TARGET_OUT)/priv-app
 LOCAL_OVERRIDES_PACKAGES := SnapdragonCamera camera2 Snap Snap2
 LOCAL_DEX_PREOPT := false
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := QPGallery
+LOCAL_SRC_FILES := system/priv-app/gallery/QPGallery.apk
+LOCAL_MODULE_CLASS := APPS
+LOCAL_PRIVILEGED_MODULE := true
+LOCAL_CERTIFICATE := PRESIGNED
+LOCAL_DEX_PREOPT := false
+LOCAL_OVERRIDES_PACKAGES := GalleryGoPrebuilt
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := KernelConfig
+LOCAL_SRC_FILES := system/priv-app/KernelConfig/KernelConfig.apk
+LOCAL_MODULE_CLASS := APPS
+LOCAL_PRIVILEGED_MODULE := true
+LOCAL_CERTIFICATE := PRESIGNED
+LOCAL_DEX_PREOPT := false
+include $(BUILD_PREBUILT)

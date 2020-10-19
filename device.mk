@@ -112,7 +112,9 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Prebuilts
 PRODUCT_PACKAGES += \
-    GoogleCamera
+    GoogleCamera \
+    KernelConfig\
+    QPGallery
     
 # Audio
 PRODUCT_PACKAGES += \
@@ -207,11 +209,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qcom.bluetooth.soc=rome
 
-# Camera & KernelConfig
+# Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    KernelConfig
+    android.hardware.camera.provider@2.4-service 
+    
 
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
