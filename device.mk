@@ -116,6 +116,10 @@ PRODUCT_PACKAGES += \
     KernelConfig\
     QPGallery
     
+#Retro music
+PRODUCT_PACKAGES += \
+RetroMusicPlayer
+    
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
