@@ -1,6 +1,7 @@
 /*
    Copyright (c) 2016, The CyanogenMod Project
-             (c) 2017-2018, The LineageOS Project
+             (c) 2017-2019, The LineageOS Project
+
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -13,6 +14,7 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
+
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -28,78 +30,95 @@
 
 #include <android-base/logging.h>
 #include <android-base/properties.h>
+
+#include <string>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
 #include "property_service.h"
 #include "vendor_init.h"
 
-int property_set(const char *key, const char *value) {
-    return __system_property_set(key, value);
-}
+using ::android::init::property_set;
 
-void property_override(char const prop[], char const value[])
-{
-    prop_info *pi;
+constexpr const char* RO_PROP_SOURCES[] = {
+        nullptr, "product.", "product_services.", "odm.", "vendor.", "system.", "bootimage.",
+};
 
-    pi = (prop_info*) __system_property_find(prop);
-    if (pi)
+constexpr const char* BUILD_DESCRIPTION[] = {
+        "OnePlus3-user 8.0.0 OPR1.170623.032 31 release-keys",
+        "OnePlus3-user 8.0.0 OPR1.170623.032 31 release-keys",
+};
+
+constexpr const char* BUILD_FINGERPRINT[] = {
+        "OnePlus/OnePlus3/OnePlus3:8.0.0/OPR1.170623.032/02281230:user/release-keys",
+        "OnePlus/OnePlus3/OnePlus3T:8.0.0/OPR1.170623.032/02281230:user/release-keys",
+};
+
+void property_override(char const prop[], char const value[]) {
+    prop_info* pi = (prop_info*)__system_property_find(prop);
+    if (pi) {
         __system_property_update(pi, value, strlen(value));
-    else
-        __system_property_add(prop, strlen(prop), value, strlen(value));
+    }
 }
 
-void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
-{
-    property_override(system_prop, value);
-    property_override(vendor_prop, value);
-}
+void load_props(const char* model, bool is_3t = false) {
+    const auto ro_prop_override = [](const char* source, const char* prop, const char* value,
+                                     bool product) {
+        std::string prop_name = "ro.";
 
-void load_op3(const char *model) {
-    property_override_dual("ro.product.model", "ro.product.vendor.model", model);
-    property_override("ro.build.product", "OnePlus3");
-    property_override_dual("ro.product.device", "ro.product.vendor.device", "OnePlus3");
-    property_override("ro.build.description", "OnePlus3-user 8.0.0 OPR6.170623.013 77 release-keys");
-    property_override_dual("ro.system.build.fingerprint", "ro.vendor.build.fingerprint", "google/sunfish/sunfish:11/RP1A.200720.011/6746289:user/release-keys");
-    property_override_dual("ro.build.fingerprint", "ro.product.build.fingerprint", "google/sunfish/sunfish:11/RP1A.200720.011/6746289:user/release-keys");
-}
+        if (product) prop_name += "product.";
+        if (source != nullptr) prop_name += source;
+        if (!product) prop_name += "build.";
+        prop_name += prop;
 
-void load_op3t(const char *model) {
-    property_override_dual("ro.product.model", "ro.product.vendor.model", model);
-    property_override("ro.build.product", "OnePlus3");
-    property_override_dual("ro.product.device", "ro.product.vendor.device", "OnePlus3T");
-    property_override("ro.build.description", "OnePlus3-user 8.0.0 OPR6.170623.013 83 release-keys");
-    property_override_dual("ro.system.build.fingerprint", "ro.vendor.build.fingerprint", "google/sunfish/sunfish:11/RP1A.200720.011/6746289:user/release-keys");
-    property_override_dual("ro.build.fingerprint", "ro.product.build.fingerprint", "google/sunfish/sunfish:11/RP1A.200720.011/6746289:user/release-keys");
-    property_set("ro.power_profile.override", "power_profile_3t");
+        property_override(prop_name.c_str(), value);
+    };
+
+    for (const auto& source : RO_PROP_SOURCES) {
+        ro_prop_override(source, "device", is_3t ? "OnePlus3T" : "OnePlus3", true);
+        ro_prop_override(source, "model", model, true);
+        ro_prop_override(source, "fingerprint", is_3t ? BUILD_FINGERPRINT[1] : BUILD_FINGERPRINT[0],
+                         false);
+    }
+    ro_prop_override(nullptr, "description", is_3t ? BUILD_DESCRIPTION[1] : BUILD_DESCRIPTION[0],
+                     false);
+    ro_prop_override(nullptr, "product", "OnePlus3", false);
+
+    // ro.build.fingerprint property has not been set
+    if (is_3t) {
+        property_set("ro.build.fingerprint", BUILD_FINGERPRINT[1]);
+        property_set("ro.power_profile.override", "power_profile_3t");
+    } else {
+        property_set("ro.build.fingerprint", BUILD_FINGERPRINT[0]);
+    }
 }
 
 void vendor_load_properties() {
-    int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", ""));
+    int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", "0"));
 
     switch (rf_version) {
-    case 11:
-    case 31:
-        /* China / North America model */
-        load_op3("ONEPLUS A3000");
-        break;
-    case 21:
-        /* Europe / Asia model */
-        load_op3("ONEPLUS A3003");
-        break;
-    case 12:
-        /* China model */
-        load_op3t("ONEPLUS A3010");
-        break;
-    case 22:
-        /* Europe / Asia model */
-        load_op3t("ONEPLUS A3003");
-        break;
-    case 32:
-        /* North America model */
-        load_op3t("ONEPLUS A3000");
-        break;
-    default:
-        LOG(ERROR) << __func__ << ": unexcepted rf version!";
+        case 11:
+        case 31:
+            /* China / North America model */
+            load_props("ONEPLUS A3000");
+            break;
+        case 21:
+            /* Europe / Asia model */
+            load_props("ONEPLUS A3003");
+            break;
+        case 12:
+            /* China model */
+            load_props("ONEPLUS A3010", true);
+            break;
+        case 22:
+            /* Europe / Asia model */
+            load_props("ONEPLUS A3003", true);
+            break;
+        case 32:
+            /* North America model */
+            load_props("ONEPLUS A3000", true);
+            break;
+        default:
+            LOG(ERROR) << __func__ << ": unexcepted rf version!";
     }
 }
